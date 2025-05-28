@@ -26,14 +26,10 @@ module.exports = (plugin) => {
           return ctx.badRequest("Somente emails da UECE são permitidos");
         }
         await rawAuth.callback(ctx);
-
-        // Certainly, there is a better way to get the created user document other than fetching all users
         const users = await strapi.documents('plugin::users-permissions.user').findMany({
           populate: ['avatar'],
         });
         const user = users.find((user) => user.email === email);
-
-        // This sounds dumb, certainly there is a better way to not run this block of code other than putting the !user.avatar conditional
         if (user && picture && !user.avatar) {
           const imageResponse = await axios.get(picture, {
             responseType: 'arraybuffer',
