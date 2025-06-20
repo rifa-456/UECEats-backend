@@ -9,6 +9,9 @@ module.exports = (plugin) => {
       ...rawAuth,
       callback: async (ctx) => {
         const accessToken = ctx.request.query.access_token;
+        if (!accessToken) {
+          return rawAuth.callback(ctx);
+        }
         let response: Response;
         try {
           response = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
