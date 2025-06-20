@@ -63,7 +63,6 @@ module.exports = (plugin) => {
       }
     };
   };
-
   plugin.controllers.user.me = async (ctx) => {
     if (!ctx.state.user) {
       return ctx.unauthorized();
@@ -72,7 +71,7 @@ module.exports = (plugin) => {
       documentId: ctx.state.user.documentId,
       populate: {
         avatar: true,
-        notifications: true,
+        notificacaos: true,
       }
     })
   };
