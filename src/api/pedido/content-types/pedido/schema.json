@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pedidos",
+  "info": {
+    "singularName": "pedido",
+    "pluralName": "pedidos",
+    "displayName": "Pedido"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "restaurante": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::restaurante.restaurante",
+      "inversedBy": "pedidos"
+    },
+    "cliente": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::estudante.estudante",
+      "inversedBy": "pedidos"
+    },
+    "entregador": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::entregador.entregador",
+      "inversedBy": "pedidos"
+    },
+    "comidas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::comida.comida",
+      "mappedBy": "pedidos"
+    },
+    "avaliacaoRestaurante": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::avaliacao.avaliacao"
+    },
+    "avaliacaoEntregador": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::avaliacao.avaliacao"
+    },
+    "statusPedido": {
+      "type": "enumeration",
+      "enum": [
+        "pendente",
+        "confirmado",
+        "emPreparo",
+        "saiuPraEntrega",
+        "entregue"
+      ]
+    },
+    "observacao": {
+      "type": "text"
+    },
+    "isRetirada": {
+      "type": "boolean"
+    },
+    "endereco": {
+      "type": "text"
+    },
+    "pagamento": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pagamento.pagamento",
+      "mappedBy": "pedido"
+    }
+  }
+}

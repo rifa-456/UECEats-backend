@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "estudantes",
+  "info": {
+    "singularName": "estudante",
+    "pluralName": "estudantes",
+    "displayName": "Estudante"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "usuario": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "pedidos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pedido.pedido",
+      "mappedBy": "cliente"
+    },
+    "isQuerendoSerEntregador": {
+      "type": "boolean"
+    }
+  }
+}

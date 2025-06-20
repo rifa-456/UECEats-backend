@@ -1,22 +1,22 @@
 /**
- * restaurante controller
+ * estudante controller
  */
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController('api::restaurante.restaurante', () => ({
+export default factories.createCoreController('api::estudante.estudante', () => ({
 
-  async desempenho(ctx) {
+  async avaliarPedido(ctx) {
     return ctx.send({
       status: "received"
     });
   },
 
-  async avaliacao(ctx) {
+  async pagarPedido(ctx) {
     return ctx.send({
       status: "received"
     });
   },
+
 
 }));
-

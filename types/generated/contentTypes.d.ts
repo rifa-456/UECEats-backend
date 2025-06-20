@@ -373,47 +373,259 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiNotificationNotification
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'notifications';
+export interface ApiAvaliacaoAvaliacao extends Struct.CollectionTypeSchema {
+  collectionName: 'avaliacaos';
   info: {
-    displayName: 'Notification';
-    pluralName: 'notifications';
-    singularName: 'notification';
+    displayName: 'Avalia\u00E7\u00E3o';
+    pluralName: 'avaliacaos';
+    singularName: 'avaliacao';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    isSeen: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::notification.notification'
+      'api::avaliacao.avaliacao'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.String;
+    mensagem: Schema.Attribute.Text;
+    nota: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user: Schema.Attribute.Relation<
+  };
+}
+
+export interface ApiComidaComida extends Struct.CollectionTypeSchema {
+  collectionName: 'comidas';
+  info: {
+    displayName: 'Produto';
+    pluralName: 'comidas';
+    singularName: 'comida';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    categoria: Schema.Attribute.Enumeration<['salgado', 'doce', 'refri']>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descricao: Schema.Attribute.Text;
+    isDisponivel: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::comida.comida'
+    > &
+      Schema.Attribute.Private;
+    nome: Schema.Attribute.String;
+    pedidos: Schema.Attribute.Relation<'manyToMany', 'api::pedido.pedido'>;
+    preco: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    restaurante: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::restaurante.restaurante'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContaDeSaqueContaDeSaque
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'contas_de_saque';
+  info: {
+    displayName: 'Conta de Saque';
+    pluralName: 'contas-de-saque';
+    singularName: 'conta-de-saque';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banco: Schema.Attribute.Enumeration<['caixa', 'santander']>;
+    chavePix: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isSaqueSolicitado: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::conta-de-saque.conta-de-saque'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    saldo: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCupomCupom extends Struct.CollectionTypeSchema {
+  collectionName: 'cupoms';
+  info: {
+    displayName: 'Cupom';
+    pluralName: 'cupoms';
+    singularName: 'cupom';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    codigo: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dataExpiracao: Schema.Attribute.DateTime;
+    isAtivo: Schema.Attribute.Boolean;
+    isPercentual: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cupom.cupom'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    restaurante: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::restaurante.restaurante'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    valor: Schema.Attribute.Integer;
+    valorMinimoDoPedido: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiEntregadorEntregador extends Struct.CollectionTypeSchema {
+  collectionName: 'entregadores';
+  info: {
+    displayName: 'Entregador';
+    pluralName: 'entregadores';
+    singularName: 'entregador';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    contaDeSaque: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::conta-de-saque.conta-de-saque'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isDisponivel: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::entregador.entregador'
+    > &
+      Schema.Attribute.Private;
+    pedidos: Schema.Attribute.Relation<'oneToMany', 'api::pedido.pedido'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    usuario: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiEstudanteEstudante extends Struct.CollectionTypeSchema {
+  collectionName: 'estudantes';
+  info: {
+    displayName: 'Estudante';
+    pluralName: 'estudantes';
+    singularName: 'estudante';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isQuerendoSerEntregador: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::estudante.estudante'
+    > &
+      Schema.Attribute.Private;
+    pedidos: Schema.Attribute.Relation<'oneToMany', 'api::pedido.pedido'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    usuario: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiNotificacaoNotificacao extends Struct.CollectionTypeSchema {
+  collectionName: 'notificacaos';
+  info: {
+    displayName: 'Notifica\u00E7\u00E3o';
+    pluralName: 'notificacaos';
+    singularName: 'notificacao';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    evento: Schema.Attribute.Enumeration<['pago']>;
+    isVisto: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notificacao.notificacao'
+    > &
+      Schema.Attribute.Private;
+    mensagem: Schema.Attribute.Text;
+    metadados: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    usuario: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
   };
 }
 
-export interface ApiRestauranteRestaurante extends Struct.CollectionTypeSchema {
-  collectionName: 'restaurantes';
+export interface ApiPagamentoPagamento extends Struct.CollectionTypeSchema {
+  collectionName: 'pagamentos';
   info: {
-    description: '';
-    displayName: 'Restaurante';
-    pluralName: 'restaurantes';
-    singularName: 'restaurante';
+    displayName: 'Pagamento';
+    pluralName: 'pagamentos';
+    singularName: 'pagamento';
   };
   options: {
     draftAndPublish: true;
@@ -422,6 +634,107 @@ export interface ApiRestauranteRestaurante extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    gateway: Schema.Attribute.Enumeration<['mercadoPago', 'stripe']>;
+    isPago: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pagamento.pagamento'
+    > &
+      Schema.Attribute.Private;
+    meioDePagamento: Schema.Attribute.Enumeration<['cartao', 'pix']>;
+    pedido: Schema.Attribute.Relation<'oneToOne', 'api::pedido.pedido'>;
+    publishedAt: Schema.Attribute.DateTime;
+    statusPagamento: Schema.Attribute.Enumeration<
+      ['pendente', 'completo', 'reembolsadoPedido', 'reembolsado']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    usuario: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    valor: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiPedidoPedido extends Struct.CollectionTypeSchema {
+  collectionName: 'pedidos';
+  info: {
+    displayName: 'Pedido';
+    pluralName: 'pedidos';
+    singularName: 'pedido';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    avaliacaoEntregador: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::avaliacao.avaliacao'
+    >;
+    avaliacaoRestaurante: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::avaliacao.avaliacao'
+    >;
+    cliente: Schema.Attribute.Relation<'manyToOne', 'api::estudante.estudante'>;
+    comidas: Schema.Attribute.Relation<'manyToMany', 'api::comida.comida'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    endereco: Schema.Attribute.Text;
+    entregador: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::entregador.entregador'
+    >;
+    isRetirada: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pedido.pedido'
+    > &
+      Schema.Attribute.Private;
+    observacao: Schema.Attribute.Text;
+    pagamento: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::pagamento.pagamento'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    restaurante: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::restaurante.restaurante'
+    >;
+    statusPedido: Schema.Attribute.Enumeration<
+      ['pendente', 'confirmado', 'emPreparo', 'saiuPraEntrega', 'entregue']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRestauranteRestaurante extends Struct.CollectionTypeSchema {
+  collectionName: 'restaurantes';
+  info: {
+    displayName: 'Restaurante';
+    pluralName: 'restaurantes';
+    singularName: 'restaurante';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    cardapio: Schema.Attribute.Relation<'oneToMany', 'api::comida.comida'>;
+    cnpj: Schema.Attribute.String;
+    contaDeSaque: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::conta-de-saque.conta-de-saque'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cupoms: Schema.Attribute.Relation<'oneToMany', 'api::cupom.cupom'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -429,6 +742,7 @@ export interface ApiRestauranteRestaurante extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     nomeRestaurante: Schema.Attribute.String;
+    pedidos: Schema.Attribute.Relation<'oneToMany', 'api::pedido.pedido'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -915,10 +1229,12 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
-    notifications: Schema.Attribute.Relation<
+    notificacaos: Schema.Attribute.Relation<
       'oneToMany',
-      'api::notification.notification'
+      'api::notificacao.notificacao'
     >;
+    numeroContato: Schema.Attribute.String;
+    numeroVinculoUECE: Schema.Attribute.String;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
@@ -953,7 +1269,15 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::notification.notification': ApiNotificationNotification;
+      'api::avaliacao.avaliacao': ApiAvaliacaoAvaliacao;
+      'api::comida.comida': ApiComidaComida;
+      'api::conta-de-saque.conta-de-saque': ApiContaDeSaqueContaDeSaque;
+      'api::cupom.cupom': ApiCupomCupom;
+      'api::entregador.entregador': ApiEntregadorEntregador;
+      'api::estudante.estudante': ApiEstudanteEstudante;
+      'api::notificacao.notificacao': ApiNotificacaoNotificacao;
+      'api::pagamento.pagamento': ApiPagamentoPagamento;
+      'api::pedido.pedido': ApiPedidoPedido;
       'api::restaurante.restaurante': ApiRestauranteRestaurante;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pagamentos",
+  "info": {
+    "singularName": "pagamento",
+    "pluralName": "pagamentos",
+    "displayName": "Pagamento"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gateway": {
+      "type": "enumeration",
+      "enum": [
+        "mercadoPago",
+        "stripe"
+      ]
+    },
+    "meioDePagamento": {
+      "type": "enumeration",
+      "enum": [
+        "cartao",
+        "pix"
+      ]
+    },
+    "isPago": {
+      "type": "boolean"
+    },
+    "valor": {
+      "type": "integer"
+    },
+    "usuario": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "statusPagamento": {
+      "type": "enumeration",
+      "enum": [
+        "pendente",
+        "completo",
+        "reembolsadoPedido",
+        "reembolsado"
+      ]
+    },
+    "pedido": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pedido.pedido",
+      "inversedBy": "pagamento"
+    }
+  }
+}

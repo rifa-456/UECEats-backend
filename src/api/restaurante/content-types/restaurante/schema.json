@@ -4,12 +4,12 @@
   "info": {
     "singularName": "restaurante",
     "pluralName": "restaurantes",
-    "displayName": "Restaurante",
-    "description": ""
+    "displayName": "Restaurante"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "usuario": {
       "type": "relation",
@@ -18,6 +18,32 @@
     },
     "nomeRestaurante": {
       "type": "string"
+    },
+    "cnpj": {
+      "type": "string"
+    },
+    "cardapio": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comida.comida",
+      "mappedBy": "restaurante"
+    },
+    "pedidos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pedido.pedido",
+      "mappedBy": "restaurante"
+    },
+    "cupoms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cupom.cupom",
+      "mappedBy": "restaurante"
+    },
+    "contaDeSaque": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::conta-de-saque.conta-de-saque"
     }
   }
 }

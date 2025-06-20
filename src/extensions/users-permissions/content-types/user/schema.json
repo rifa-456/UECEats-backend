@@ -11,6 +11,7 @@
   "options": {
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "username": {
       "type": "string",
@@ -66,17 +67,23 @@
       "configurable": false
     },
     "avatar": {
+      "type": "media",
+      "multiple": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "notifications": {
+    "notificacaos": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::notification.notification",
-      "mappedBy": "user"
+      "target": "api::notificacao.notificacao",
+      "mappedBy": "usuario"
+    },
+    "numeroContato": {
+      "type": "string"
+    },
+    "numeroVinculoUECE": {
+      "type": "string"
     }
   }
 }

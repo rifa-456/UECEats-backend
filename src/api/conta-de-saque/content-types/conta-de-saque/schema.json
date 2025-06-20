@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contas_de_saque",
+  "info": {
+    "singularName": "conta-de-saque",
+    "pluralName": "contas-de-saque",
+    "displayName": "Conta de Saque"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banco": {
+      "type": "enumeration",
+      "enum": [
+        "caixa",
+        "santander"
+      ]
+    },
+    "saldo": {
+      "type": "integer"
+    },
+    "isSaqueSolicitado": {
+      "type": "boolean"
+    },
+    "chavePix": {
+      "type": "string"
+    }
+  }
+}

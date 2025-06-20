@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notificacaos",
+  "info": {
+    "singularName": "notificacao",
+    "pluralName": "notificacaos",
+    "displayName": "Notificação"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "usuario": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "notificacaos"
+    },
+    "isVisto": {
+      "type": "boolean",
+      "default": false
+    },
+    "evento": {
+      "type": "enumeration",
+      "enum": [
+        "pago"
+      ]
+    },
+    "titulo": {
+      "type": "string"
+    },
+    "mensagem": {
+      "type": "text"
+    },
+    "metadados": {
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+/**
+ * infra service
+ */
+
+export default () => ({});

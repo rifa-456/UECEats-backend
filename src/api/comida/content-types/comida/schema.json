@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comidas",
+  "info": {
+    "singularName": "comida",
+    "pluralName": "comidas",
+    "displayName": "Produto"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "restaurante": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::restaurante.restaurante",
+      "inversedBy": "cardapio"
+    },
+    "nome": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "text"
+    },
+    "preco": {
+      "type": "integer"
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "salgado",
+        "doce",
+        "refri"
+      ]
+    },
+    "pedidos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::pedido.pedido",
+      "inversedBy": "comidas"
+    },
+    "isDisponivel": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

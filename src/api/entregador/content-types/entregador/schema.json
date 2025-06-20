@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entregadores",
+  "info": {
+    "singularName": "entregador",
+    "pluralName": "entregadores",
+    "displayName": "Entregador"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "usuario": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "pedidos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pedido.pedido",
+      "mappedBy": "entregador"
+    },
+    "isDisponivel": {
+      "type": "boolean"
+    },
+    "contaDeSaque": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::conta-de-saque.conta-de-saque"
+    }
+  }
+}
