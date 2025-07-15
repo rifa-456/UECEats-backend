@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-06-20T22:17:24.770Z"
+    "x-generation-date": "2025-07-15T09:46:28.360Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -8028,9 +8028,6 @@
                       }
                     }
                   },
-                  "numeroContato": {
-                    "type": "string"
-                  },
                   "numeroVinculoUECE": {
                     "type": "string"
                   },
@@ -10525,9 +10522,6 @@
                       }
                     }
                   },
-                  "numeroContato": {
-                    "type": "string"
-                  },
                   "numeroVinculoUECE": {
                     "type": "string"
                   },
@@ -12479,9 +12473,6 @@
                     }
                   }
                 }
-              },
-              "numeroContato": {
-                "type": "string"
               },
               "numeroVinculoUECE": {
                 "type": "string"
@@ -14461,9 +14452,6 @@
                   }
                 }
               },
-              "numeroContato": {
-                "type": "string"
-              },
               "numeroVinculoUECE": {
                 "type": "string"
               },
@@ -16430,9 +16418,6 @@
                   }
                 }
               },
-              "numeroContato": {
-                "type": "string"
-              },
               "numeroVinculoUECE": {
                 "type": "string"
               },
@@ -17598,9 +17583,6 @@
                     }
                   }
                 }
-              },
-              "numeroContato": {
-                "type": "string"
               },
               "numeroVinculoUECE": {
                 "type": "string"
@@ -19651,9 +19633,6 @@
                         }
                       }
                     }
-                  },
-                  "numeroContato": {
-                    "type": "string"
                   },
                   "numeroVinculoUECE": {
                     "type": "string"
@@ -21725,9 +21704,6 @@
                     }
                   }
                 }
-              },
-              "numeroContato": {
-                "type": "string"
               },
               "numeroVinculoUECE": {
                 "type": "string"

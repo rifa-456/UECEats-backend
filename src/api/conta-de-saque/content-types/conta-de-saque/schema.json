@@ -7,7 +7,7 @@
     "displayName": "Conta de Saque"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

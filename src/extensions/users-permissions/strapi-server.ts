@@ -28,7 +28,11 @@ module.exports = (plugin) => {
         if (!domain.toLowerCase().includes('uece')) {
           return ctx.badRequest("Somente emails da UECE são permitidos");
         }
-        await rawAuth.callback(ctx);
+        try {
+          await rawAuth.callback(ctx);
+        } catch (error) {
+          strapi.log.error('Error during user creation:', error);
+        }
         const users = await strapi.documents('plugin::users-permissions.user').findMany({
           populate: ['avatar'],
         });

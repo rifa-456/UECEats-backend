@@ -457,7 +457,7 @@ export interface ApiContaDeSaqueContaDeSaque
     singularName: 'conta-de-saque';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     banco: Schema.Attribute.Enumeration<['caixa', 'santander']>;
@@ -1233,7 +1233,6 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::notificacao.notificacao'
     >;
-    numeroContato: Schema.Attribute.String;
     numeroVinculoUECE: Schema.Attribute.String;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &

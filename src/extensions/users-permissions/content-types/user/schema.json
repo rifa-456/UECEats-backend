@@ -79,9 +79,6 @@
       "target": "api::notificacao.notificacao",
       "mappedBy": "usuario"
     },
-    "numeroContato": {
-      "type": "string"
-    },
     "numeroVinculoUECE": {
       "type": "string"
     }

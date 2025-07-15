@@ -14,17 +14,14 @@ export class SocketIOClient {
         auth: { token },
         transports: ['websocket'],
       });
-
       this.socket.on('connect', () => {
         console.log('Connected to socket server');
         resolve();
       });
-
       this.socket.on('connect_error', (error) => {
         console.error('Connection error:', error);
         reject(error);
       });
-
       this.socket.on('disconnect', () => {
         console.log('Disconnected from socket server');
       });
