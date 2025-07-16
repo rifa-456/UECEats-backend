@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-15T09:46:28.360Z"
+    "x-generation-date": "2025-07-16T16:08:15.910Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7049,7 +7049,7 @@
                 "enum": [
                   "salgado",
                   "doce",
-                  "refri"
+                  "pratoFeito"
                 ]
               },
               "pedidos": {
@@ -8126,7 +8126,7 @@
                       "enum": [
                         "salgado",
                         "doce",
-                        "refri"
+                        "pratoFeito"
                       ]
                     },
                     "pedidos": {
@@ -8634,6 +8634,7 @@
                               }
                             }
                           },
+                          "comidasPedidas": {},
                           "createdAt": {
                             "type": "string",
                             "format": "date-time"
@@ -8932,7 +8933,7 @@
             "enum": [
               "salgado",
               "doce",
-              "refri"
+              "pratoFeito"
             ]
           },
           "pedidos": {
@@ -10620,7 +10621,7 @@
                       "enum": [
                         "salgado",
                         "doce",
-                        "refri"
+                        "pratoFeito"
                       ]
                     },
                     "pedidos": {
@@ -11128,6 +11129,7 @@
                               }
                             }
                           },
+                          "comidasPedidas": {},
                           "createdAt": {
                             "type": "string",
                             "format": "date-time"
@@ -12603,7 +12605,7 @@
                             "enum": [
                               "salgado",
                               "doce",
-                              "refri"
+                              "pratoFeito"
                             ]
                           },
                           "pedidos": {
@@ -13333,6 +13335,7 @@
                     }
                   }
                 },
+                "comidasPedidas": {},
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -14581,7 +14584,7 @@
                             "enum": [
                               "salgado",
                               "doce",
-                              "refri"
+                              "pratoFeito"
                             ]
                           },
                           "pedidos": {
@@ -15311,6 +15314,7 @@
                     }
                   }
                 },
+                "comidasPedidas": {},
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -17720,7 +17724,7 @@
                           "enum": [
                             "salgado",
                             "doce",
-                            "refri"
+                            "pratoFeito"
                           ]
                         },
                         "pedidos": {
@@ -18450,6 +18454,7 @@
                   }
                 }
               },
+              "comidasPedidas": {},
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -18675,6 +18680,7 @@
                 ],
                 "example": "string or id"
               },
+              "comidasPedidas": {},
               "locale": {
                 "type": "string"
               },
@@ -19732,7 +19738,7 @@
                       "enum": [
                         "salgado",
                         "doce",
-                        "refri"
+                        "pratoFeito"
                       ]
                     },
                     "pedidos": {
@@ -20240,6 +20246,7 @@
                               }
                             }
                           },
+                          "comidasPedidas": {},
                           "createdAt": {
                             "type": "string",
                             "format": "date-time"
@@ -20612,6 +20619,7 @@
               }
             }
           },
+          "comidasPedidas": {},
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -22323,6 +22331,7 @@
                               }
                             }
                           },
+                          "comidasPedidas": {},
                           "createdAt": {
                             "type": "string",
                             "format": "date-time"
@@ -22550,7 +22559,7 @@
                   "enum": [
                     "salgado",
                     "doce",
-                    "refri"
+                    "pratoFeito"
                   ]
                 },
                 "pedidos": {

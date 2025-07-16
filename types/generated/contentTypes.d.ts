@@ -422,7 +422,7 @@ export interface ApiComidaComida extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    categoria: Schema.Attribute.Enumeration<['salgado', 'doce', 'refri']>;
+    categoria: Schema.Attribute.Enumeration<['salgado', 'doce', 'pratoFeito']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -628,7 +628,7 @@ export interface ApiPagamentoPagamento extends Struct.CollectionTypeSchema {
     singularName: 'pagamento';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -680,6 +680,7 @@ export interface ApiPedidoPedido extends Struct.CollectionTypeSchema {
     >;
     cliente: Schema.Attribute.Relation<'manyToOne', 'api::estudante.estudante'>;
     comidas: Schema.Attribute.Relation<'manyToMany', 'api::comida.comida'>;
+    comidasPedidas: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

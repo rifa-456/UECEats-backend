@@ -7,6 +7,11 @@ export default {
     },
     {
       method: 'GET',
+      path: `/restaurantes/cardapio/:documentId`,
+      handler: 'restaurante.getCardapio',
+    },
+    {
+      method: 'GET',
       path: `/restaurantes/avaliacoes`,
       handler: 'restaurante.avaliacao',
     },
