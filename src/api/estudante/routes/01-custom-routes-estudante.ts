@@ -6,9 +6,9 @@ export default {
       handler: 'estudante.avaliarPedido',
     },
     {
-      method: 'POST',
-      path: `/estudantes/pagar/:pedidoID`,
-      handler: 'estudante.pagarPedido',
+      method: 'GET',
+      path: `/estudantes/pedidos/:estudanteDocumentId`,
+      handler: 'estudante.getPedidos',
     }
   ]
 }

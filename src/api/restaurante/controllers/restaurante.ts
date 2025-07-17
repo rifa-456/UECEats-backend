@@ -25,9 +25,6 @@ export default factories.createCoreController('api::restaurante.restaurante', ()
   async getCardapio(ctx) {
     // @ts-expect-error this works
     const {documentId} = ctx.request.params;
-    if (!documentId) {
-      throw new ValidationError('O Request não possui documentId, por favor tente novamente.');
-    }
     const restaurante = await strapi.documents('api::restaurante.restaurante').findOne({
       documentId,
       populate: {
