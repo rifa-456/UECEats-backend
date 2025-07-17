@@ -24,7 +24,7 @@
       "type": "text"
     },
     "preco": {
-      "type": "integer"
+      "type": "decimal"
     },
     "categoria": {
       "type": "enumeration",
