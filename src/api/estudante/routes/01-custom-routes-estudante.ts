@@ -9,6 +9,11 @@ export default {
       method: 'GET',
       path: `/estudantes/pedidos/:estudanteDocumentId`,
       handler: 'estudante.getPedidos',
+    },
+    {
+      method: 'GET',
+      path: `/estudantes/usuario/:usuarioDocumentId`,
+      handler: 'estudante.getUsuario',
     }
   ]
 }

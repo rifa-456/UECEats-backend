@@ -66,5 +66,18 @@ export default factories.createCoreController('api::estudante.estudante', () => 
     return ctx.send(transformed);
   },
 
+  async getUsuario(ctx) {
+    // @ts-expect-error this works
+    const {usuarioDocumentId} = ctx.request.params;
+    const estudantes = await strapi.documents('api::estudante.estudante').findMany({
+      populate: {
+        usuario:  true
+      },
+    });
+    const estudante = estudantes.filter(estudante =>
+      estudante.usuario.documentId === usuarioDocumentId
+    );
+    return ctx.send(estudante);
+  },
 
 }));
