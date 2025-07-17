@@ -19,7 +19,7 @@ export const stripeServices = {
                 name: 'Comida',
               },
               // eslint-disable-next-line camelcase
-              unit_amount: data.price * 100,
+              unit_amount: Math.round(data.price * 100),
             },
             quantity: 1,
           },
