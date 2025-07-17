@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-17T08:44:22.904Z"
+    "x-generation-date": "2025-07-17T09:09:22.877Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -8550,7 +8550,8 @@
                                 "type": "boolean"
                               },
                               "valor": {
-                                "type": "integer"
+                                "type": "number",
+                                "format": "float"
                               },
                               "usuario": {
                                 "type": "object",
@@ -11047,7 +11048,8 @@
                                 "type": "boolean"
                               },
                               "valor": {
-                                "type": "integer"
+                                "type": "number",
+                                "format": "float"
                               },
                               "usuario": {
                                 "type": "object",
@@ -13254,7 +13256,8 @@
                       "type": "boolean"
                     },
                     "valor": {
-                      "type": "integer"
+                      "type": "number",
+                      "format": "float"
                     },
                     "usuario": {
                       "type": "object",
@@ -15234,7 +15237,8 @@
                       "type": "boolean"
                     },
                     "valor": {
-                      "type": "integer"
+                      "type": "number",
+                      "format": "float"
                     },
                     "usuario": {
                       "type": "object",
@@ -16591,7 +16595,8 @@
                 "type": "boolean"
               },
               "valor": {
-                "type": "integer"
+                "type": "number",
+                "format": "float"
               },
               "usuario": {
                 "oneOf": [
@@ -16707,7 +16712,8 @@
             "type": "boolean"
           },
           "valor": {
-            "type": "integer"
+            "type": "number",
+            "format": "float"
           },
           "usuario": {
             "type": "object",
@@ -18375,7 +18381,8 @@
                     "type": "boolean"
                   },
                   "valor": {
-                    "type": "integer"
+                    "type": "number",
+                    "format": "float"
                   },
                   "usuario": {
                     "type": "object",
@@ -20168,7 +20175,8 @@
                                 "type": "boolean"
                               },
                               "valor": {
-                                "type": "integer"
+                                "type": "number",
+                                "format": "float"
                               },
                               "usuario": {
                                 "type": "object",
@@ -22253,7 +22261,8 @@
                                 "type": "boolean"
                               },
                               "valor": {
-                                "type": "integer"
+                                "type": "number",
+                                "format": "float"
                               },
                               "usuario": {
                                 "type": "object",

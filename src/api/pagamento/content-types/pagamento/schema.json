@@ -29,7 +29,7 @@
       "type": "boolean"
     },
     "valor": {
-      "type": "integer"
+      "type": "decimal"
     },
     "usuario": {
       "type": "relation",

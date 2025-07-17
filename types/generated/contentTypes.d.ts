@@ -436,7 +436,7 @@ export interface ApiComidaComida extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     nome: Schema.Attribute.String;
     pedidos: Schema.Attribute.Relation<'manyToMany', 'api::pedido.pedido'>;
-    preco: Schema.Attribute.Integer;
+    preco: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     restaurante: Schema.Attribute.Relation<
       'manyToOne',
@@ -655,7 +655,7 @@ export interface ApiPagamentoPagamento extends Struct.CollectionTypeSchema {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    valor: Schema.Attribute.Integer;
+    valor: Schema.Attribute.Decimal;
   };
 }
 
